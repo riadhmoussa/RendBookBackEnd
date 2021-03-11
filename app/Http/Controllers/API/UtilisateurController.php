@@ -20,7 +20,7 @@ class UtilisateurController extends Controller
             'user_id' => $request->get('user_id'),
             'url_picture' => $request->get('url_picture')
         ]);
-        Log::channel('stderr')->info('Something happened!'.$utilisateur);
+        //Log::channel('stderr')->info('Something happened!'.$request);
         $utilisateur->save();
        
         return response(['message' => 'utilisateur add','utilisateur' => $utilisateur]);
