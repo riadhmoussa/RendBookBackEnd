@@ -19,9 +19,9 @@ class AuthController extends Controller
         $user->password = $request->password;
         $user->save();
         //$user = User::create($validatedData);
-        $accessToken = $user->createToken('authToken')->accessToken;
+        //$accessToken = $user->createToken('authToken')->accessToken;
 
-        return response([ 'message' => 'user add','user' => $user, 'access_token' => $accessToken]);
+        return response([ 'message' => 'user add','user' => $user]);
     }
 
    
@@ -39,9 +39,9 @@ class AuthController extends Controller
             return response(['message' => 'Invalid Credentials']);
         }
 
-        $accessToken =  $user->createToken('authToken')->accessToken;
+       // $accessToken =  $user->createToken('authToken')->accessToken;
 
-        return response(['message' => 'valid Credentials','user' =>  $user , 'access_token' => $accessToken]);
+        return response(['message' => 'valid Credentials','user' =>  $user]);
 
     }
     public function HelloWorld(Request $request){

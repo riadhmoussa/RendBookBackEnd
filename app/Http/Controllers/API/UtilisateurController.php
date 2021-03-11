@@ -4,30 +4,33 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Utilisateur;
+use Illuminate\Support\Facades\Log;
 
 class UtilisateurController extends Controller
 {
     
 
-    public function store(Request $request)
+    public function createUtilisateur(Request $request)
     {
-
-            $utilisateur= new Utilisateur();
-            $utilisateur->first_name=$request->input('first_name');
-            $utilisateur->last_name	=$request->input('last_name');
-            $utilisateur->email	=$request->input('email');
-            $utilisateur->user_id=$request->input('user_id');
-            $utilisateur->url_picture=$request->input('url_picture');
-            $utilisateur->save();
+        
+        $utilisateur = new Utilisateur([
+            'first_name' => $request->get('first_name'),
+            'last_name' => $request->get('last_name'),
+            'email' => $request->get('email'),
+            'user_id' => $request->get('user_id'),
+            'url_picture' => $request->get('url_picture')
+        ]);
+        Log::channel('stderr')->info('Something happened!'.$utilisateur);
+        $utilisateur->save();
        
-        return response(['message' => 'utilisateur add','utilisateur' => $utilisateur, 'access_token'=>""], 201);
+        return response(['message' => 'utilisateur add','utilisateur' => $utilisateur]);
 
     }
 
     public function show(Request $request ,$id)
     {
         $utilisateur=Utilisateur::where('user_id',$id)->get();
-        return response(['utilisateur' => $utilisateur], 201);
+        return response(['utilisateur' => $utilisateur]);
     }
 
  

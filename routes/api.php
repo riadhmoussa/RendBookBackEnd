@@ -26,7 +26,7 @@ Route::post('/login', [AuthController::class,'login']);
 Route::get('/hello',[AuthController::class,'HelloWorld']);
 
 
-Route::post('/utilisateurs/store',[UtilisateurController::class,'store']);
+Route::post('/utilisateurs/store',[UtilisateurController::class,'createUtilisateur']);
 Route::post('/utilisateurs/show/{id}',[UtilisateurController::class,'show']);
 
 
