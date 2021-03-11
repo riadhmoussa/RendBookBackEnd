@@ -17,9 +17,10 @@ class UtilisateurController extends Controller
             $utilisateur->last_name	=$request->input('last_name');
             $utilisateur->email	=$request->input('email');
             $utilisateur->user_id=$request->input('user_id');
+            $utilisateur->url_picture=$request->input('url_picture');
             $utilisateur->save();
        
-        return response(['utilisateur' => $utilisateur, 'message' => 'Created successfully'], 201);
+        return response(['message' => 'utilisateur add','utilisateur' => $utilisateur, 'access_token'=>""], 201);
 
     }
 

@@ -19,6 +19,7 @@ class CreateUtilisateursTable extends Migration
             $table->string('last_name', 255);
             $table->string('email',100)->unique();
             $table->integer('user_id')->unique();
+            $table->string('url_picture');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
