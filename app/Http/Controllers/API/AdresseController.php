@@ -12,12 +12,13 @@ class AdresseController extends Controller
     {
 
         $adresse= new Adresse();
+        $adresse->ville=$request->input('ville');
         $adresse->region=$request->input('region');
         $adresse->rue	=$request->input('rue');
         $adresse->batiment	=$request->input('batiment');
         $adresse->utilisateur_id=$request->input('utilisateur_id');
         $adresse->save();
-        return response([ 'message' => 'Created successfully','adresse' => $adresse], 201);
+        return response($adresse, 201);
     }
 
     public function show($id){

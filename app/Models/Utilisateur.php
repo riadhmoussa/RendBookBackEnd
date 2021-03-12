@@ -26,9 +26,23 @@ class Utilisateur extends Model
 
 
 
-    public $table="utilisateurs";
-    public function articles()
+    public $table_utilisateur="utilisateurs";
+    public function utilisateurs()
     {
         return $this->hasMany('App\Models\Adresse');
+    }
+
+
+    public $table_reclamation="reclamations";
+    public function reclamations()
+    {
+        return $this->hasMany('App\Models\Reclamation');
+    }
+
+
+    public $table_courriercommunications="courriercommunications";
+    public function courriercommunications()
+    {
+        return $this->hasMany('App\Models\Courriercommunication');
     }
 }

@@ -3,8 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Illuminate\Support\Facades\Hash;
-class CreateUsersTable extends Migration
+
+class CreateReclamationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('reclamations', function (Blueprint $table) {
             $table->id();
-            $table->string('phone_number')->unique();
-            $table->string('password');
-            $table->string('status')->default('allowed');
-            $table->rememberToken();
+            $table->string('details',255);
+            $table->string('notes_administration',500)->default('فارغ');
+            $table->integer('utilisateur_id');
+            $table->foreign('utilisateur_id')->references('user_id')->on('utitlisateurs');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('reclamations');
     }
 }
