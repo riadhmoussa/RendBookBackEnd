@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Adresse;
+use Illuminate\Support\Facades\Log;
 
 class AdresseController extends Controller
 {
@@ -16,13 +17,12 @@ class AdresseController extends Controller
         $adresse->batiment	=$request->input('batiment');
         $adresse->utilisateur_id=$request->input('utilisateur_id');
         $adresse->save();
-   
-        return response(['adresse' => $adresse, 'message' => 'Created successfully'], 201);
+        return response([ 'message' => 'Created successfully','adresse' => $adresse], 201);
     }
 
-    public function show(Request $request){
-        $adresses = Adresse::all();
-        return response([ 'adresses' =>$adresses, 'message' => 'Retrieved successfully'], 200);
+    public function show($id){
+        $adresses = Adresse::where('utilisateur_id', '=', $id)->get();
+        return response( $adresses, 200);
 
     }
 }

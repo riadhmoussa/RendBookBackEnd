@@ -30,7 +30,8 @@ Route::post('/utilisateurs/store',[UtilisateurController::class,'createUtilisate
 Route::post('/utilisateurs/show/{id}',[UtilisateurController::class,'show']);
 
 
-Route::post('adresses',[AdresseController::class,'store']);
+Route::post('/adresses/store',[AdresseController::class,'store']);
+Route::get('/adresses/show/{id}',[AdresseController::class,'show']);
 
 Route::post('/articles',[ArticleController::class,'store']);
 
