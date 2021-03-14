@@ -20,9 +20,14 @@ class CreateCourriercommunicationsTable extends Migration
             $table->string('email');
             $table->string('subject');
             $table->string('text_body');
-            $table->integer('utilisateur_id');
-            $table->foreign('utilisateur_id')->references('user_id')->on('utitlisateurs');
+            $table->unsignedBigInteger('utilisateur_id');
             $table->timestamps();
+        });
+        Schema::table('courriercommunications', function($table)
+        {
+            $table->foreign('utilisateur_id')
+            ->references('user_id')->on('utilisateurs')
+            ->onDelete('cascade');
         });
     }
 

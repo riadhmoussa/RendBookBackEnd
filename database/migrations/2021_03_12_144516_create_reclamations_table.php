@@ -17,9 +17,14 @@ class CreateReclamationsTable extends Migration
             $table->id();
             $table->string('details',255);
             $table->string('notes_administration',500)->default('فارغ');
-            $table->integer('utilisateur_id');
-            $table->foreign('utilisateur_id')->references('user_id')->on('utitlisateurs');
+            $table->unsignedBigInteger('utilisateur_id');
             $table->timestamps();
+        });
+        Schema::table('reclamations', function($table)
+        {
+            $table->foreign('utilisateur_id')
+            ->references('user_id')->on('utilisateurs')
+            ->onDelete('cascade');
         });
     }
 
