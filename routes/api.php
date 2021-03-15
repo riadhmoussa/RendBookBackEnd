@@ -10,6 +10,7 @@ use App\Http\Controllers\API\UtilisateurController;
 use App\Http\Controllers\API\AuthenticationController;
 use App\Http\Controllers\API\AdresseController;
 use App\Http\Controllers\API\ReclamationController;
+use App\Http\Controllers\API\CategorieController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -28,6 +29,7 @@ Route::post('/login', [AuthController::class,'login']);
 
 Route::post('/utilisateurs/store',[UtilisateurController::class,'createUtilisateur']);
 Route::post('/utilisateurs/show/{id}',[UtilisateurController::class,'show']);
+Route::get('/utilisateurs/getuser/{id}',[UtilisateurController::class,'getuser']);
 
 
 Route::post('/adresses/store',[AdresseController::class,'store']);
@@ -40,5 +42,8 @@ Route::get('/reclamation/show/{id}',[ReclamationController::class,'show']);
 
 
 Route::post('/articles',[ArticleController::class,'store']);
+
+
+Route::get('/categorie',[CategorieController::class,'getAllCategories']);
 
 

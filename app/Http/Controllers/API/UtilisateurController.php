@@ -27,12 +27,9 @@ class UtilisateurController extends Controller
 
     }
 
-    public function show(Request $request ,$id)
+    public function getuser(Request $request ,$id)
     {
-        $utilisateur=Utilisateur::where('user_id',$id)->get();
-        return response(['utilisateur' => $utilisateur]);
+        $utilisateur = Utilisateur::where('user_id', $id)->first();
+        return response([$utilisateur], 200);
     }
-
- 
-   
 }

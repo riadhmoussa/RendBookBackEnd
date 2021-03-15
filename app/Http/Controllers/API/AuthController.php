@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Utilisateur;
 
 class AuthController extends Controller
 {
@@ -40,8 +41,8 @@ class AuthController extends Controller
         }
 
        // $accessToken =  $user->createToken('authToken')->accessToken;
-
-        return response(['message' => 'valid Credentials','user' =>  $user]);
+       $utitlisateur = Utilisateur::where('user_id','=',$user->id)->first();
+        return response(['message' => 'valid Credentials','user' =>  $utitlisateur]);
 
     }
     public function HelloWorld(Request $request){
