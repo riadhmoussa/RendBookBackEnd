@@ -11,6 +11,8 @@ use App\Http\Controllers\API\AuthenticationController;
 use App\Http\Controllers\API\AdresseController;
 use App\Http\Controllers\API\ReclamationController;
 use App\Http\Controllers\API\CategorieController;
+use App\Http\Controllers\API\LivreController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -46,4 +48,7 @@ Route::post('/articles',[ArticleController::class,'store']);
 
 Route::get('/categorie',[CategorieController::class,'getAllCategories']);
 
+
+
+Route::post('/livres',[LivreController::class,'store']);
 

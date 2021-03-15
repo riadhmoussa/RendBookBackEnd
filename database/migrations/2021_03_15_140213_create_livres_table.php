@@ -27,7 +27,7 @@ class CreateLivresTable extends Migration
             $table->string('prix_annee');
             $table->string('prix_garantie');
             $table->string('chemin_image');
-            
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
         });
 
@@ -35,6 +35,10 @@ class CreateLivresTable extends Migration
         {
             $table->foreign('id_categrie')
             ->references('id')->on('categories')
+            ->onDelete('cascade');
+            
+            $table->foreign('user_id')
+            ->references('user_id')->on('utilisateurs')
             ->onDelete('cascade');
         });
     }
