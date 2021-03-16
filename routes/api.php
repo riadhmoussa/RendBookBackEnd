@@ -51,4 +51,6 @@ Route::get('/categorie',[CategorieController::class,'getAllCategories']);
 
 
 Route::post('/livres',[LivreController::class,'store']);
+Route::get('/livres/{id}',[LivreController::class,'GetMybooks']);
+Route::get('/livres',[LivreController::class,'show']);
 

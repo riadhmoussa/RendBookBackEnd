@@ -13,7 +13,10 @@ class LivreController extends Controller
     public function store(Request $request)
     {
 
+        Log::channel('stderr')->info('Something happened!'.$request);
+
         $livre= new Livre();
+
         $livre->nom=$request->input('nom');
         $livre->auteur=$request->input('auteur');
         $livre->detaills=$request->input('detaills');
@@ -24,14 +27,18 @@ class LivreController extends Controller
         $livre->prix_jour=$request->input('prix_jour');
         $livre->prix_semaine=$request->input('prix_semaine');
         $livre->prix_annee=$request->input('prix_annee');
-        $livre->prix_garantie=$request->input('prix_garantie');
         $livre->chemin_image=$request->input('chemin_image');
         $livre->user_id=$request->input('user_id');
         $livre->save();
         return response($livre, 201);
     }
 
-    public function show($id){
+    public function show(){
+        $livres = Livre::all();
+        return response($livres,200);
+    }
+
+    public function GetMybooks($id){
         $livres = Livre::where('user_id', '=', $id)->get();
         return response( $livres, 200);
 

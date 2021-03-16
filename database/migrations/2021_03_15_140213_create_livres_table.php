@@ -21,11 +21,10 @@ class CreateLivresTable extends Migration
             $table->unsignedBigInteger('id_categrie');
             $table->string('ville');
             $table->string('type_operation');
-            $table->string('prix_vente');
-            $table->string('prix_jour');
-            $table->string('prix_semaine');
-            $table->string('prix_annee');
-            $table->string('prix_garantie');
+            $table->string('prix_vente')->default('0');
+            $table->string('prix_jour')->default('0');
+            $table->string('prix_semaine')->default('0');
+            $table->string('prix_annee')->default('0');
             $table->string('chemin_image');
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
