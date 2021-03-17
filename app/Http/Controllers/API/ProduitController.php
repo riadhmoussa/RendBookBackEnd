@@ -9,8 +9,9 @@ use Illuminate\Support\Facades\Log;
 
 class ProduitController extends Controller
 {
-    public function AjouterLivre(Request $request)
+    public function Ajouter(Request $request)
     {
+        Log::info($request);
         $produit= new Produit();
         $produit->nom=$request->input('nom');
         $produit->auteur=$request->input('auteur');
@@ -28,7 +29,7 @@ class ProduitController extends Controller
         $produit->save();
         return response($produit, 201);
     }
-    public function Afficher(){
+    public function AfficherProduits(){
         $books = Produit::all();
         return response($books,200);
     }
@@ -43,7 +44,7 @@ class ProduitController extends Controller
         return response($books,200);
     }
 
-    public function AfficheMonLivre($id){
+    public function AfficheMonLivres($id){
         $books = Produit::where(
             [
             ['user_id', '=', $id],
@@ -77,6 +78,24 @@ class ProduitController extends Controller
         $produit->save();
         return response($produit, 201);
     }
+
+
+    public function SupprimerProduit ($id) {
+          $book = Produit::find($id);
+          $book->delete();
+          return response(201);
+
+        
+      }
+
+      public function getProductByCategorie($id,$ville){
+        $products = Produit::where(
+            [
+                ['id_categrie',"=",$id]
+            ],
+            [['ville','like','%' .$ville. '%']])->get();
+        return response($products,201);
+      }
 
 
     

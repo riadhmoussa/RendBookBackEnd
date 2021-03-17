@@ -50,13 +50,17 @@ Route::get('/categorie',[CategorieController::class,'getAllCategories']);
 
 
 
-Route::post('/livres',[ProduitController::class,'AjouterLivre']);
-Route::get('/livres/{id}',[ProduitController::class,'AfficheMonLivre']);
-Route::get('/livres',[ProduitController::class,'Afficher']);
+Route::post('/produits',[ProduitController::class,'Ajouter']);
+Route::get('/produits',[ProduitController::class,'AfficherProduits']);
+Route::get('/produits/livres/{id}',[ProduitController::class,'AfficheMonLivres']);
 
 
-Route::post('/services',[ProduitController::class,'AjouterService']);
-Route::get('/services/{id}',[ProduitController::class,'AfficheMonService']);
+Route::post('/produits/services',[ProduitController::class,'AjouterService']);
+Route::get('/produits/services/{id}',[ProduitController::class,'AfficheMonService']);
+Route::delete('/produits/services/{id}',[ProduitController::class,'SupprimerProduit']);
+
+Route::get('/produits/{id}',[ProduitController::class,'getProductByCategorie']);
+
 
 
 /*Route::post('/livres',[LivreController::class,'store']);

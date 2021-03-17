@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Produit extends Model
 {
-    public function categorie()
+    public function Categorie()
     {
         return $this->belongsTo('App\Models\Categorie');
     }
