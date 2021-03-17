@@ -12,11 +12,7 @@ class LivreController extends Controller
     
     public function store(Request $request)
     {
-
-        Log::channel('stderr')->info('Something happened!'.$request);
-
         $livre= new Livre();
-
         $livre->nom=$request->input('nom');
         $livre->auteur=$request->input('auteur');
         $livre->detaills=$request->input('detaills');

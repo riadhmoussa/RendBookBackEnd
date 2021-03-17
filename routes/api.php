@@ -11,7 +11,7 @@ use App\Http\Controllers\API\AuthenticationController;
 use App\Http\Controllers\API\AdresseController;
 use App\Http\Controllers\API\ReclamationController;
 use App\Http\Controllers\API\CategorieController;
-use App\Http\Controllers\API\LivreController;
+use App\Http\Controllers\API\ProduitController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,7 +50,16 @@ Route::get('/categorie',[CategorieController::class,'getAllCategories']);
 
 
 
-Route::post('/livres',[LivreController::class,'store']);
+Route::post('/livres',[ProduitController::class,'AjouterLivre']);
+Route::get('/livres/{id}',[ProduitController::class,'AfficheMonLivre']);
+Route::get('/livres',[ProduitController::class,'Afficher']);
+
+
+Route::post('/services',[ProduitController::class,'AjouterService']);
+Route::get('/services/{id}',[ProduitController::class,'AfficheMonService']);
+
+
+/*Route::post('/livres',[LivreController::class,'store']);
 Route::get('/livres/{id}',[LivreController::class,'GetMybooks']);
-Route::get('/livres',[LivreController::class,'show']);
+Route::get('/livres',[LivreController::class,'AfficherLivre']);*/
 

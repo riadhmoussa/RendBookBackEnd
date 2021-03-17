@@ -10,6 +10,8 @@ class Categorie extends Model
     public $table="categories";
     public function categories()
     {
-        return $this->hasMany('App\Models\Livre');
+        return $this->hasMany('App\Models\Produit');
     }
+
+  
 }

@@ -45,4 +45,11 @@ class Utilisateur extends Model
     {
         return $this->hasMany('App\Models\Courriercommunication');
     }
+
+
+    public $table_produit="produits";
+    public function produits()
+    {
+        return $this->hasMany('App\Models\Produit');
+    }
 }
