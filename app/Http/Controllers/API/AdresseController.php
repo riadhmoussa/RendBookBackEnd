@@ -26,4 +26,14 @@ class AdresseController extends Controller
         return response( $adresses, 200);
 
     }
+
+    public function editeAdresse(Request $request,$id){
+        $adresse = Adresse::find($id);
+        $adresse->ville= $request->input('ville');
+        $adresse->region =$request->input('region');
+        $adresse->rue = $request->input('rue');
+        $adresse->batiment = $request->input('batiment');
+        $adresse->save();
+        return response( $adresse, 200);
+    }
 }

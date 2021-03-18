@@ -36,6 +36,7 @@ Route::get('/utilisateurs/getuser/{id}',[UtilisateurController::class,'getuser']
 
 Route::post('/adresses/store',[AdresseController::class,'store']);
 Route::get('/adresses/show/{id}',[AdresseController::class,'show']);
+Route::put('/adresses/editeAdresse/{id}',[AdresseController::class,'editeAdresse']);
 
 
 Route::post('/reclamation/store',[ReclamationController::class,'store']);
@@ -59,7 +60,7 @@ Route::post('/produits/services',[ProduitController::class,'AjouterService']);
 Route::get('/produits/services/{id}',[ProduitController::class,'AfficheMonService']);
 Route::delete('/produits/services/{id}',[ProduitController::class,'SupprimerProduit']);
 
-Route::get('/produits/{id}',[ProduitController::class,'getProductByCategorie']);
+Route::get('/produits/{id}/{ville?}',[ProduitController::class,'getProductByCategorie']);
 
 
 

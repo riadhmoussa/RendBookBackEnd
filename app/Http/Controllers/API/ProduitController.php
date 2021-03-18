@@ -88,13 +88,20 @@ class ProduitController extends Controller
         
       }
 
-      public function getProductByCategorie($id,$ville){
-        $products = Produit::where(
-            [
-                ['id_categrie',"=",$id]
-            ],
-            [['ville','like','%' .$ville. '%']])->get();
-        return response($products,201);
+      public function getProductByCategorie($id,$ville=null){
+        if (empty($ville)) { 
+            $products = Produit::where(
+               'id_categrie',"=",$id)->get();
+            return response($products,201);
+        }else{
+            $products = Produit::where(
+                [
+                    ['id_categrie',"=",$id]
+                ],
+                [['ville','like','%' .$ville. '%']])->get();
+            return response($products,201);
+        }
+       
       }
 
 
