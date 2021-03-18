@@ -81,27 +81,26 @@ class ProduitController extends Controller
 
 
     public function SupprimerProduit ($id) {
-          $book = Produit::find($id);
-          $book->delete();
-          return response(201);
+          $produit = Produit::find($id);
+          $produit->delete();
+          return response($produit,201);
 
         
       }
 
       public function getProductByCategorie($id,$ville=null){
         if (empty($ville)) { 
-            $products = Produit::where(
+            $produit = Produit::where(
                'id_categrie',"=",$id)->get();
-            return response($products,201);
+            return response($produit,201);
         }else{
-            $products = Produit::where(
+            $produit = Produit::where(
                 [
                     ['id_categrie',"=",$id]
                 ],
                 [['ville','like','%' .$ville. '%']])->get();
-            return response($products,201);
+            return response($produit,201);
         }
-       
       }
 
 

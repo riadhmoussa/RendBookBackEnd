@@ -62,6 +62,7 @@ Route::delete('/produits/services/{id}',[ProduitController::class,'SupprimerProd
 
 Route::get('/produits/{id}/{ville?}',[ProduitController::class,'getProductByCategorie']);
 
+Route::delete('/produits/{id}',[ProduitController::class,'SupprimerProduit']);
 
 
 /*Route::post('/livres',[LivreController::class,'store']);
