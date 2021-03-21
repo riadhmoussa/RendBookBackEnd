@@ -17,9 +17,5 @@ class Produit extends Model
         return $this->belongsTo('App\Models\Utilisateur');
     }
 
-    public $table="commenters";
-    public function produits()
-    {
-        return $this->hasMany('App\Models\Commenter');
-    }
+    
 }

@@ -16,6 +16,7 @@ class CreateCommentersTable extends Migration
         Schema::create('commenters', function (Blueprint $table) {
             $table->id();
             $table->string('crops')->required();
+            $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('id_produit');
             $table->timestamps();
         });
@@ -24,6 +25,9 @@ class CreateCommentersTable extends Migration
         {
             $table->foreign('id_produit')
             ->references('id')->on('produits')
+            ->onDelete('cascade');
+            $table->foreign('user_id')
+            ->references('user_id')->on('utilisateurs')
             ->onDelete('cascade');
           
         });
