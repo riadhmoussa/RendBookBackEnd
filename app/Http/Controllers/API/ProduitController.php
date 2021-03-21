@@ -34,12 +34,12 @@ class ProduitController extends Controller
         return response($books,200);
     }
 
-    public function AfficherLivre(){
+    public function AfficherLivres(){
         $books = Produit::where('type_service',"=","book")->get();
         return response($books,200);
     }
 
-    public function AfficherService(){
+    public function AfficherServices(){
         $books = Produit::where('type_service',"=","service")->get();
         return response($books,200);
     }
@@ -81,6 +81,7 @@ class ProduitController extends Controller
 
 
     public function SupprimerProduit ($id) {
+
           $produit = Produit::find($id);
           $produit->delete();
           return response($produit,201);
@@ -103,6 +104,11 @@ class ProduitController extends Controller
         }
       }
 
+
+      public function AfficherLivreId($id){
+          $produit = Produit::find($id);
+        return response($produit,201);
+      }
 
     
 

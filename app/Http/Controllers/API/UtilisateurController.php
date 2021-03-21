@@ -30,6 +30,6 @@ class UtilisateurController extends Controller
     public function getuser(Request $request ,$id)
     {
         $utilisateur = Utilisateur::where('user_id', $id)->first();
-        return response([$utilisateur], 200);
+        return response($utilisateur, 200);
     }
 }

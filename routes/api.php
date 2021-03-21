@@ -12,7 +12,7 @@ use App\Http\Controllers\API\AdresseController;
 use App\Http\Controllers\API\ReclamationController;
 use App\Http\Controllers\API\CategorieController;
 use App\Http\Controllers\API\ProduitController;
-
+use App\Http\Controllers\API\CommenterController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -64,6 +64,10 @@ Route::get('/produits/{id}/{ville?}',[ProduitController::class,'getProductByCate
 
 Route::delete('/produits/{id}',[ProduitController::class,'SupprimerProduit']);
 
+Route::get('/produitsId/{id}',[ProduitController::class,'AfficherLivreId']);
+
+
+Route::post('/commentaires',[CommenterController::class,'AjouterCommenter']);
 
 /*Route::post('/livres',[LivreController::class,'store']);
 Route::get('/livres/{id}',[LivreController::class,'GetMybooks']);
