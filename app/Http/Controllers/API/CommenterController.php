@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Commenter;
+use DB;
 
 
 class CommenterController extends Controller
@@ -21,6 +22,15 @@ class CommenterController extends Controller
     public function AfficherCommentaire($id){
         $commenters = Commenter::where('id_produit', '=', $id)->get();
         return response( $commenters, 200);
+    }
+
+    function AfficherCommntairesUtilisateur($id){
+        $commenters = DB::table('commenters')
+    ->join('utilisateurs', 'commenters.user_id', '=', 'utilisateurs.id')
+    ->where('id_produit', '=' , $id)
+    ->get();
+
+    return response($commenters,201);
     }
     
 
