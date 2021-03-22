@@ -13,6 +13,8 @@ use App\Http\Controllers\API\ReclamationController;
 use App\Http\Controllers\API\CategorieController;
 use App\Http\Controllers\API\ProduitController;
 use App\Http\Controllers\API\CommenterController;
+use App\Http\Controllers\API\FavoriController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -71,7 +73,9 @@ Route::post('/commentaires',[CommenterController::class,'AjouterCommenter']);
 Route::get('/commentaires/{id}',[CommenterController::class,'AfficherCommentaire']);
 Route::get('/commentairesUtilisateur/{id}',[CommenterController::class,'AfficherCommntairesUtilisateur']);
 
-/*Route::post('/livres',[LivreController::class,'store']);
-Route::get('/livres/{id}',[LivreController::class,'GetMybooks']);
-Route::get('/livres',[LivreController::class,'AfficherLivre']);*/
+
+Route::post('/favoris',[FavoriController::class,'AjouterFavori']);
+Route::get('/favoris/{user_id}/{product_id}',[FavoriController::class,'VerifierProduitPrefere']);
+Route::delete('/favoris/{id}',[FavoriController::class,'AnnulerFavori']);
+
 
