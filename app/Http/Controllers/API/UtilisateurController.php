@@ -10,7 +10,7 @@ class UtilisateurController extends Controller
 {
     
 
-    public function createUtilisateur(Request $request)
+    public function creerUtilisateur(Request $request)
     {
         
         $utilisateur = new Utilisateur([
@@ -27,9 +27,19 @@ class UtilisateurController extends Controller
 
     }
 
-    public function getuser(Request $request ,$id)
+    public function obtenirUtilisateur(Request $request ,$id)
     {
         $utilisateur = Utilisateur::where('user_id', $id)->first();
         return response($utilisateur, 200);
+    }
+
+    public function ChangePhoto(Request $request,$id){
+    
+    {
+        $utilisateur = Utilisateur::where('user_id', $id)->first();
+        $utilisateur->url_picture = $request->url_picture;
+        $utilisateur->save();
+        return response($utilisateur,201);
+    }
     }
 }
