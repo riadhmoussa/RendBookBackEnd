@@ -34,7 +34,9 @@ Route::post('/login', [AuthController::class,'login']);
 Route::post('/utilisateurs/store',[UtilisateurController::class,'creerUtilisateur']);
 Route::post('/utilisateurs/show/{id}',[UtilisateurController::class,'Afficher']);
 Route::get('/utilisateurs/getuser/{id}',[UtilisateurController::class,'obtenirUtilisateur']);
-Route::put('/utilisateurs/{id}',[UtilisateurController::class,'ChangePhoto']);
+Route::put('/utilisateurs/picture/{id}',[UtilisateurController::class,'ChangePhoto']);
+Route::put('/utilisateurs/info/{id}',[UtilisateurController::class,'AjourInfo']);
+
 
 
 Route::post('/adresses/store',[AdresseController::class,'store']);

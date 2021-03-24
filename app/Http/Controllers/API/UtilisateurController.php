@@ -35,11 +35,20 @@ class UtilisateurController extends Controller
 
     public function ChangePhoto(Request $request,$id){
     
-    {
+   
         $utilisateur = Utilisateur::where('user_id', $id)->first();
         $utilisateur->url_picture = $request->url_picture;
         $utilisateur->save();
         return response($utilisateur,201);
+  
     }
+
+    public function AjourInfo(Request $request ,$id){
+        $utilisateur = Utilisateur::where('user_id',$id)->first();
+        $utilisateur->first_name = $request->first_name;
+        $utilisateur->last_name=$request->last_name;
+        $utilisateur->email=$request->email;
+        $utilisateur->save();
+        return response($utilisateur,201);
     }
 }
