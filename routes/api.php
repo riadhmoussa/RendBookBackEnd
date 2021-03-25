@@ -66,7 +66,9 @@ Route::get('/produits/services/{id}',[ProduitController::class,'AfficheMonServic
 Route::delete('/produits/services/{id}',[ProduitController::class,'SupprimerProduit']);
 
 Route::get('/produits/{id}/{ville?}',[ProduitController::class,'getProductByCategorie']);
-
+Route::post('/produits/RechercheThreFact',[ProduitController::class,'RechercheThreFact']);
+Route::post('/produits/RechrcheTwoFact',[ProduitController::class,'RechrcheTwoFact']);
+Route::post('/produits/RechercheOneFact',[ProduitController::class,'RechercheOneFact']);
 Route::delete('/produits/{id}',[ProduitController::class,'SupprimerProduit']);
 
 Route::get('/produitsId/{id}',[ProduitController::class,'AfficherLivreId']);
