@@ -82,5 +82,6 @@ Route::get('/commentairesUtilisateur/{id}',[CommenterController::class,'Afficher
 Route::post('/favoris',[FavoriController::class,'AjouterFavori']);
 Route::get('/favoris/{user_id}/{product_id}',[FavoriController::class,'VerifierProduitPrefere']);
 Route::delete('/favoris/{id}',[FavoriController::class,'AnnulerFavori']);
-
+Route::get('/AfficherService/{id}',[FavoriController::class,'AfficherService']);
+Route::get('/AfficherBook/{id}',[FavoriController::class,'AfficherBook']);
 

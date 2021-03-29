@@ -112,9 +112,9 @@ class ProduitController extends Controller
 
 
      public function RechercheThreFact(Request $request){
-        error_log($request->ville);
-        error_log($request->id_categorie);
-        error_log($request->nom);
+        //error_log($request->ville);
+        //error_log($request->id_categorie);
+        //error_log($request->nom);
             $produits = Produit::where('nom', 'like','%'.$request->nom.'%')
             ->where('ville', '=', $request->ville)
             ->where('id_categrie', '=', $request->id_categorie)
@@ -124,8 +124,8 @@ class ProduitController extends Controller
       }
 
       public function RechrcheTwoFact(Request $request){
-        error_log($request->ville);
-        error_log($request->id_categorie);
+       // error_log($request->ville);
+       // error_log($request->id_categorie);
         $produits = Produit::where('ville','=',$request->ville)->
         where('id_categrie','=',$request->id_categorie)
         ->get();

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Favori;
-
+use Illuminate\Support\Facades\DB;
 
 class FavoriController extends Controller
 {
@@ -31,6 +31,41 @@ class FavoriController extends Controller
         $favori = Favori::find($id);
         $favori->delete();
         return response($favori,201);
+    }
+
+
+
+    public function AfficherService($id){
+
+      $favoris =    DB::table('favoris')
+         ->join('produits', function ($join) use($id) {
+        $join->on('favoris.product_id', '=', 'produits.id')
+             ->where([
+                ['favoris.user_id', '=',$id],
+                ['produits.type_service', '=', 'service']
+             ]);
+            })->get(['produits.id','produits.nom','produits.auteur','produits.detaills','produits.type_service','produits.ville',
+            'produits.type_operation','produits.prix_vente','produits.prix_jour','produits.prix_semaine',
+            'produits.prix_annee','produits.chemin_image','produits.user_id','produits.id_categrie',
+            'produits.created_at','produits.updated_at']);
+
+        return response($favoris ,201);
+    }
+
+    public function AfficherBook($id){
+        $favoris =    DB::table('favoris')
+        ->join('produits', function ($join) use($id) {
+       $join->on('favoris.product_id', '=', 'produits.id')
+            ->where([
+               ['favoris.user_id', '=',$id],
+               ['produits.type_service', '=', 'book']
+            ]);
+   })->get(['produits.id','produits.nom','produits.auteur','produits.detaills','produits.type_service','produits.ville',
+   'produits.type_operation','produits.prix_vente','produits.prix_jour','produits.prix_semaine',
+   'produits.prix_annee','produits.chemin_image','produits.user_id','produits.id_categrie',
+   'produits.created_at','produits.updated_at']);
+
+       return response($favoris ,201);
     }
 
 }
