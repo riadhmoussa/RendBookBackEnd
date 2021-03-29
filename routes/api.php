@@ -84,4 +84,5 @@ Route::get('/favoris/{user_id}/{product_id}',[FavoriController::class,'VerifierP
 Route::delete('/favoris/{id}',[FavoriController::class,'AnnulerFavori']);
 Route::get('/AfficherService/{id}',[FavoriController::class,'AfficherService']);
 Route::get('/AfficherBook/{id}',[FavoriController::class,'AfficherBook']);
+Route::delete('/RetraitFavorite/{user_id}/{product_id}',[FavoriController::class,'RetraitFavorite']);
 

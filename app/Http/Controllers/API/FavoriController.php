@@ -68,4 +68,13 @@ class FavoriController extends Controller
        return response($favoris ,201);
     }
 
+    public function RetraitFavorite($user_id,$product_id){
+        $favori = Favori::where(where([
+            ['favoris.user_id', '=',$id],
+            ['produits.type_service', '=', 'service']
+         ]))->first();
+        $favori->delete();
+        return response($favori,201);
+    }
+
 }
