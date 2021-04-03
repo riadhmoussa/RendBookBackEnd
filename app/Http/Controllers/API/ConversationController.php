@@ -13,7 +13,9 @@ class ConversationController extends Controller
         $conversation->acheteur_id=$request->input('acheteur_id');
         $conversation->proprietaire_id=$request->input('proprietaire_id');
         $conversation->product_id=$request->input('product_id');
+        $conversation->status="attente";
         $conversation->save();
+        error_log($request);
         return response($conversation,201);
     }
 
@@ -22,11 +24,11 @@ class ConversationController extends Controller
             ->where('proprietaire_id', '=', $proprietaire_id)
             ->where('product_id', '=', $product_id)
             ->first();
-         if($conversation){
-            return response($conversation,201);
-         }else{
-             return response(["message" => "Conversation not found"],404);
-         }
+            if($conversation){
+                return response(["message"=>"exist","conversation"=>$conversation],201);
+            }else{
+                return response(["message"=>"dont exist","conversation"=>null],201);
+            }
 
         
     }

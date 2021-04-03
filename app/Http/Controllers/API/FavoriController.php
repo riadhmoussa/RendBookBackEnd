@@ -23,7 +23,12 @@ class FavoriController extends Controller
                 ['product_id','=',$product_id]
 
         ])->first();
-        return response($favori,201);
+        if($favori){
+            return response(["message"=>"exist","favorite"=>$favori],201);
+        }else{
+            return response(["message"=>"dont exist","favorite"=>null],201);
+        }
+        
     }
 
 
