@@ -14,6 +14,7 @@ use App\Http\Controllers\API\CategorieController;
 use App\Http\Controllers\API\ProduitController;
 use App\Http\Controllers\API\CommenterController;
 use App\Http\Controllers\API\FavoriController;
+use App\Http\Controllers\API\ConversationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -85,4 +86,8 @@ Route::delete('/favoris/{id}',[FavoriController::class,'AnnulerFavori']);
 Route::get('/AfficherService/{id}',[FavoriController::class,'AfficherService']);
 Route::get('/AfficherBook/{id}',[FavoriController::class,'AfficherBook']);
 Route::delete('/RetraitFavorite/{user_id}/{product_id}',[FavoriController::class,'RetraitFavorite']);
+
+
+Route::get('/conversation/{acheteur_id}/{proprietaire_id}/{product_id}',[ConversationController::class,'VerifierExsitConversation']);
+Route::post('/conversation',[ConversationController::class,'creerConversation']);
 
