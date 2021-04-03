@@ -15,6 +15,8 @@ use App\Http\Controllers\API\ProduitController;
 use App\Http\Controllers\API\CommenterController;
 use App\Http\Controllers\API\FavoriController;
 use App\Http\Controllers\API\ConversationController;
+use App\Http\Controllers\API\MessageController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -90,4 +92,8 @@ Route::delete('/RetraitFavorite/{user_id}/{product_id}',[FavoriController::class
 
 Route::get('/conversation/{acheteur_id}/{proprietaire_id}/{product_id}',[ConversationController::class,'VerifierExsitConversation']);
 Route::post('/conversation',[ConversationController::class,'creerConversation']);
+
+
+Route::post('/messages',[MessageController::class,'AjouterMessage']);
+Route::get('/messages/{id}',[MessageController::class,'AfficherMessageConversation']);
 
