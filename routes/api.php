@@ -96,4 +96,5 @@ Route::post('/conversation',[ConversationController::class,'creerConversation'])
 
 Route::post('/messages',[MessageController::class,'AjouterMessage']);
 Route::get('/messages/{id}',[MessageController::class,'AfficherMessageConversation']);
+Route::get('/messagesConversation/{id}',[MessageController::class,'ObtenirConversation']);
 

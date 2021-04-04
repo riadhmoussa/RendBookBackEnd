@@ -23,7 +23,12 @@ class MessageController extends Controller
     }
 
     public function AfficherMessageConversation($id){
-        $messages = Message::where('id', '=', $id)->get();
+        $messages = Message::where('conversation_id', '=', $id)->get();
         return response( $messages, 200);
     }
+
+   /* public function ObtenirConversation($id){
+        $messages = Message::where('id', '=', $id)->get();
+        return response($messages,201);
+    }*/
 }
