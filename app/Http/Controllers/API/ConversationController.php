@@ -5,6 +5,10 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Conversation;
+use App\Models\Message;
+use DB;
+
+
 
 class ConversationController extends Controller
 {
@@ -16,6 +20,11 @@ class ConversationController extends Controller
         $conversation->status="attente";
         $conversation->save();
         error_log($request);
+        return response($conversation,201);
+    }
+
+    public function AfficherConversation($id){
+        $conversation = Conversation::where('id',"=",$id)->first();
         return response($conversation,201);
     }
 
@@ -31,5 +40,21 @@ class ConversationController extends Controller
             }
 
         
+    }
+
+
+    public function AfficherMonListeConversation($id){
+
+
+        $messages  = DB::table('messages')
+          ->join('utilisateurs as user1', 'user1.user_id', '=', 'messages.expediteur_id')
+          ->join('utilisateurs as user2', 'user2.user_id', '=', 'messages.receveur_di')
+          ->where('expediteur_id',"=",$id)->orWhere('receveur_di',"=",$id)
+          ->orderBy('conversation_id', 'desc')
+          ->groupBy('conversation_id')
+          ->get(["messages.*","user1.first_name as expediteurFirstName","user1.last_name as expediteurLastName","user1.url_picture as expediteurUrlPicture","user2.first_name as receveurFirstName","user2.last_name as receveurLast","user2.url_picture as receveurUrlPicture"]);
+
+    
+        return response($messages,201);
     }
 }

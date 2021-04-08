@@ -92,9 +92,11 @@ Route::delete('/RetraitFavorite/{user_id}/{product_id}',[FavoriController::class
 
 Route::get('/conversation/{acheteur_id}/{proprietaire_id}/{product_id}',[ConversationController::class,'VerifierExsitConversation']);
 Route::post('/conversation',[ConversationController::class,'creerConversation']);
-
+Route::get('/conversations/{id}',[ConversationController::class,'AfficherMonListeConversation']);
+Route::get("/AfficherConversation/{id}",[ConversationController::class,"AfficherConversation"]);
 
 Route::post('/messages',[MessageController::class,'AjouterMessage']);
 Route::get('/messages/{id}',[MessageController::class,'AfficherMessageConversation']);
 Route::get('/messagesConversation/{id}',[MessageController::class,'ObtenirConversation']);
+
 
