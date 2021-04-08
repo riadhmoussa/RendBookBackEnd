@@ -16,7 +16,6 @@ class MessageController extends Controller
         $message->expediteur_id=$request->input('expediteur_id');
         $message->receveur_di=$request->input('receveur_di');
         $message->conversation_id=$request->input('conversation_id');
-        error_log($message);
         $message->save();
         return response($message, 201);
 
@@ -25,6 +24,14 @@ class MessageController extends Controller
     public function AfficherMessageConversation($id){
         $messages = Message::where('conversation_id', '=', $id)->get();
         return response( $messages, 200);
+    }
+
+    public function MiseAJourConversation($id_conversation,$last_id){
+        $messages = Message::where([
+            ['conversation_id', '=', $id_conversation],
+            ['id', '>', $last_id]
+        ])->get();
+        return response($messages,200);
     }
 
    /* public function ObtenirConversation($id){

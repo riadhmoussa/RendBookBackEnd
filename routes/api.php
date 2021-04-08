@@ -95,8 +95,11 @@ Route::post('/conversation',[ConversationController::class,'creerConversation'])
 Route::get('/conversations/{id}',[ConversationController::class,'AfficherMonListeConversation']);
 Route::get("/AfficherConversation/{id}",[ConversationController::class,"AfficherConversation"]);
 
+
+
 Route::post('/messages',[MessageController::class,'AjouterMessage']);
 Route::get('/messages/{id}',[MessageController::class,'AfficherMessageConversation']);
 Route::get('/messagesConversation/{id}',[MessageController::class,'ObtenirConversation']);
+Route::get('/MiseAJourConversation/{id_conversation}/{last_id}',[MessageController::class,'MiseAJourConversation']);
 
 
