@@ -75,6 +75,7 @@ Route::post('/produits/RechercheOneFact',[ProduitController::class,'RechercheOne
 Route::delete('/produits/{id}',[ProduitController::class,'SupprimerProduit']);
 
 Route::get('/produitsId/{id}',[ProduitController::class,'AfficherLivreId']);
+Route::get('/AfficherLivreDetails/{id}',[ProduitController::class,'AfficherLivreDetails']);
 
 
 Route::post('/commentaires',[CommenterController::class,'AjouterCommenter']);

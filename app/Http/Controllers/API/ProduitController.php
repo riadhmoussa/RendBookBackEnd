@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Produit;
+use App\Models\Utilisateur;
 use Illuminate\Support\Facades\Log;
 
 class ProduitController extends Controller
@@ -108,6 +109,13 @@ class ProduitController extends Controller
       public function AfficherLivreId($id){
           $produit = Produit::find($id);
         return response($produit,201);
+      }
+
+
+      public function AfficherLivreDetails($id){
+          $produit = Produit::find($id);
+          $utilisateur = Utilisateur::find($produit->user_id);
+          return response(["product"=>$produit,"utilisateur"=>$utilisateur],201);
       }
 
 
