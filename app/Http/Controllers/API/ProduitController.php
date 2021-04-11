@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Produit;
 use App\Models\Utilisateur;
+use App\Models\Favori;
 use Illuminate\Support\Facades\Log;
 
 class ProduitController extends Controller
