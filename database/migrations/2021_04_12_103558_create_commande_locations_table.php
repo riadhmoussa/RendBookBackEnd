@@ -17,7 +17,7 @@ class CreateCommandeLocationsTable extends Migration
             $table->id();
             $table->string('prix');
             $table->string('date_debut');
-            $table->string('date_final');
+            $table->string('date_fin');
             $table->unsignedBigInteger('commande_id');
             $table->timestamps();
         });
