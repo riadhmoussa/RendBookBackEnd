@@ -17,7 +17,7 @@ class CreateCommandesTable extends Migration
             $table->id();
             $table->string('typeCommande');
             $table->string('cancled')->default('false');
-            $table->string('payee');
+            $table->string('payee')->default('false');
             $table->string('status')->default('attente');
             $table->unsignedBigInteger('conversation_id');
             $table->timestamps();
