@@ -16,7 +16,7 @@ use App\Http\Controllers\API\CommenterController;
 use App\Http\Controllers\API\FavoriController;
 use App\Http\Controllers\API\ConversationController;
 use App\Http\Controllers\API\MessageController;
-
+use App\Http\Controllers\API\CommandeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -104,3 +104,4 @@ Route::get('/messagesConversation/{id}',[MessageController::class,'ObtenirConver
 Route::get('/MiseAJourConversation/{id_conversation}/{last_id}',[MessageController::class,'MiseAJourConversation']);
 
 
+Route::post('/commande',[CommandeController::class,'AjouterCommande']);
