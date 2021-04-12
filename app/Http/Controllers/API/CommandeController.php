@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Commande;
 use App\Models\CommandeLocation;
 use App\Models\CommandeVente;
+use App\Models\Conversation;
 
 class CommandeController extends Controller
 {
@@ -40,5 +41,13 @@ class CommandeController extends Controller
         $commande_location->date_fin=$request->input('date_fin');
         $commande_location->save();
         return response($commande_location,201);
+    }
+
+    public function AffecteeConversation(Request $request,$id)
+    {
+        $conversation = Conversation::find($id);
+        $conversation->status=$request->input('status');
+        $conversation->save();
+        return response($conversation,201);
     }
 }
