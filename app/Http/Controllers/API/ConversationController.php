@@ -44,18 +44,15 @@ class ConversationController extends Controller
 
 
     public function AfficherMonListeConversation($id){
-
-
         $messages  = DB::table('messages')
+        ->select(["messages.*","user1.first_name as expediteurFirstName","user1.last_name as expediteurLastName","user1.url_picture as expediteurUrlPicture","user2.first_name as receveurFirstName","user2.last_name as receveurLast","user2.url_picture as receveurUrlPicture"])
           ->join('utilisateurs as user1', 'user1.user_id', '=', 'messages.expediteur_id')
           ->join('utilisateurs as user2', 'user2.user_id', '=', 'messages.receveur_di')
           ->where('expediteur_id',"=",$id)
           ->orWhere('receveur_di',"=",$id)
           ->orderBy('conversation_id', 'desc')
           ->groupBy('conversation_id')
-          ->get(["messages.*","user1.first_name as expediteurFirstName","user1.last_name as expediteurLastName","user1.url_picture as expediteurUrlPicture","user2.first_name as receveurFirstName","user2.last_name as receveurLast","user2.url_picture as receveurUrlPicture"]);
-
-    
+          ->paginate();
         return response($messages,201);
     }
 }

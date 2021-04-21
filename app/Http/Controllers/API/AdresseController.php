@@ -22,7 +22,7 @@ class AdresseController extends Controller
     }
 
     public function show($id){
-        $adresses = Adresse::where('utilisateur_id', '=', $id)->get();
+        $adresses = Adresse::where('utilisateur_id', '=', $id)->paginate(10);
         return response( $adresses, 200);
 
     }
