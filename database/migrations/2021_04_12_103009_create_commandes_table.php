@@ -16,6 +16,9 @@ class CreateCommandesTable extends Migration
         Schema::create('commandes', function (Blueprint $table) {
             $table->id();
             $table->string('typeCommande');
+            $table->string('prix')->default('0');
+            $table->string('DateDebut')->default('99/12/9999');
+            $table->string('DateFin')->default('99/12/9999');
             $table->string('cancled')->default('false');
             $table->string('payee')->default('false');
             $table->string('status')->default('attente');

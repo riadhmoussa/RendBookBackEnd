@@ -39,7 +39,7 @@ Route::post('/utilisateurs/show/{id}',[UtilisateurController::class,'Afficher'])
 Route::get('/utilisateurs/getuser/{id}',[UtilisateurController::class,'obtenirUtilisateur']);
 Route::put('/utilisateurs/picture/{id}',[UtilisateurController::class,'ChangePhoto']);
 Route::put('/utilisateurs/info/{id}',[UtilisateurController::class,'AjourInfo']);
-
+Route::get('verificationUtilisateur/{id}',[UtilisateurController::class,'VerifierUtilisateur']);
 
 
 Route::post('/adresses/store',[AdresseController::class,'store']);

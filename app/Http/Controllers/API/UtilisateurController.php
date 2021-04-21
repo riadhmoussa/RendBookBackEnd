@@ -33,6 +33,18 @@ class UtilisateurController extends Controller
         return response($utilisateur, 200);
     }
 
+    public function VerifierUtilisateur($id){
+         
+$utilisateur = Utilisateur::where('user_id', $id)->first();
+        if($utilisateur){
+                return response([ 'message' => 'exist','utilisateur' =>$utilisateur],201);
+        }else{
+            return response([ 'message' => 'notexist','utilisateur' =>null],201);
+        }
+        
+    }
+    
+
     public function ChangePhoto(Request $request,$id){
     
    
