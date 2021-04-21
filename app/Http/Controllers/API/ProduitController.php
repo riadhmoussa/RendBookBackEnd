@@ -32,7 +32,7 @@ class ProduitController extends Controller
         return response($produit, 201);
     }
     public function AfficherProduits(){
-        $books = Produit::all();
+        $books = Produit::paginate(10);
         return response($books,200);
     }
 
@@ -51,7 +51,7 @@ class ProduitController extends Controller
             [
             ['user_id', '=', $id],
             ['type_service', '=', 'book']
-            ])->get();
+            ])->paginate(10);
         return response( $books, 200);
 
     }
@@ -61,7 +61,7 @@ class ProduitController extends Controller
             [
             ['user_id', '=', $id],
             ['type_service', '=', 'service']
-            ])->get();
+            ])->paginate(10);
         return response( $books, 200);
 
     }

@@ -52,7 +52,7 @@ class ConversationController extends Controller
           ->orWhere('receveur_di',"=",$id)
           ->orderBy('conversation_id', 'desc')
           ->groupBy('conversation_id')
-          ->paginate();
+          ->paginate(10);
         return response($messages,201);
     }
 }
