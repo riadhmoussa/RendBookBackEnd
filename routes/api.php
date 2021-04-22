@@ -106,3 +106,6 @@ Route::get('/MiseAJourConversation/{id_conversation}/{last_id}',[MessageControll
 
 
 Route::post('/commande',[CommandeController::class,'AjouterCommande']);
+Route::post('/AjouterCommandeVente',[CommandeController::class,'AjouterCommandeVente']);
+Route::post('/AjouterCommandeLocation',[CommandeController::class,'AjouterCommandeLocation']);
+Route::get('/AfficherCommandes/{id}',[CommandeController::class,'AfficherCommandes']);
