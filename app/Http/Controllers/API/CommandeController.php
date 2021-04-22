@@ -29,7 +29,7 @@ class CommandeController extends Controller
     }
 
 
-    public function AjouterCommandeVente(Request $request,$id){
+    public function AjouterCommandeVente(Request $request){
          $commandeVente= new CommandeVente();
         $commandeVente->prix=$request->input('prix');
         $commandeVente->commande_id=$request->input('commande_id');
@@ -39,7 +39,7 @@ class CommandeController extends Controller
 
     }
 
-    public function AjouterCommandeLocation(Request $request,$id){
+    public function AjouterCommandeLocation(Request $request){
           $commandeLocation= new CommandeLocation();
         $commandeLocation->prix=$request->input('prix');
         $commandeLocation->date_debut=$request->input('date_debut');
@@ -58,13 +58,80 @@ class CommandeController extends Controller
     }
 
 
-    public function AfficherCommandes($id){
-        $commandes = DB::table('commandes')
-            ->join('commande_ventes', 'commandes.id', '=', 'commande_ventes.commande_id')
-            ->join('commande_locations', 'commandes.id', '=', 'commande_locations.commande_id')
-            ->select('users.*', 'commande_ventes.*', 'commande_locations.*')
-            ->paginate(10);
+    public function AfficherCommandesMyBook($id){
+            $commandeGratuit = DB::table('commandes')
+            ->select('commandes.*','produits.*')
+            ->join('conversations', 'commandes.conversation_id', '=', 'conversations.id')
+            ->join('produits','conversations.product_id','produits.id')
+            ->where('commandes.typeCommande','=',"مجاني")
+            ->where('produits.type_service','=','book')
+            ->where('produits.user_id','=',$id)
+            ->get();
 
+            $commandesVente = DB::table('commandes')
+            ->select('commandes.*','produits.*','commande_ventes.*')
+            ->join('commande_ventes', 'commandes.id', '=', 'commande_ventes.commande_id')
+             ->join('conversations', 'commandes.conversation_id', '=', 'conversations.id')
+            ->join('produits','conversations.product_id','produits.id')
+             ->where('produits.type_service','=','book')
+              ->where('produits.user_id','=',$id)
+            ->get();
+
+$commandeLocation = DB::table('commandes')
+->select('commandes.*','produits.*','commande_locations.*')
+            ->join('commande_locations', 'commandes.id', '=', 'commande_locations.commande_id')
+             ->join('conversations', 'commandes.conversation_id', '=', 'conversations.id')
+            ->join('produits','conversations.product_id','produits.id')
+             ->where('produits.type_service','=','book')
+              ->where('produits.user_id','=',$id)
+            ->get();
+        $result = $commandesVente->merge($commandeLocation);
+        $resultfinal = $result->merge($commandeGratuit);
+        $commandes = $resultfinal->all();
+
+        
+       
+           
             return response($commandes,201);
     }
+    public function AfficherCommandeMyService(){
+          $commandeGratuit = DB::table('commandes')
+            ->select('commandes.*','produits.*')
+            ->join('conversations', 'commandes.conversation_id', '=', 'conversations.id')
+            ->join('produits','conversations.product_id','produits.id')
+            ->where('commandes.typeCommande','=',"مجاني")
+            ->where('produits.type_service','=','services')
+             ->where('produits.user_id','=',$id)
+            ->get();
+
+            $commandesVente = DB::table('commandes')
+            ->select('commandes.*','produits.*','commande_ventes.*')
+            ->join('commande_ventes', 'commandes.id', '=', 'commande_ventes.commande_id')
+             ->join('conversations', 'commandes.conversation_id', '=', 'conversations.id')
+            ->join('produits','conversations.product_id','produits.id')
+             ->where('produits.type_service','=','services')
+              ->where('produits.user_id','=',$id)
+            ->get();
+
+$commandeLocation = DB::table('commandes')
+->select('commandes.*','produits.*','commande_locations.*')
+            ->join('commande_locations', 'commandes.id', '=', 'commande_locations.commande_id')
+             ->join('conversations', 'commandes.conversation_id', '=', 'conversations.id')
+            ->join('produits','conversations.product_id','produits.id')
+             ->where('produits.type_service','=','services')
+              ->where('produits.user_id','=',$id)
+            ->get();
+        $result = $commandesVente->merge($commandeLocation);
+        $resultfinal = $result->merge($commandeGratuit);
+        $commandes = $resultfinal->all();
+
+        
+       
+           
+            return response($commandes,201);
+    }
+
+
+
+   
 }
