@@ -10,7 +10,13 @@ use Illuminate\Support\Facades\Log;
 class CategorieController extends Controller
 {
     public function getAllCategories() {
-        $categories = Categorie::get();
+        $categories = Categorie::paginate(10);
+        return response($categories, 200);
+      }
+
+
+      public function getAllCategoriesSansPagination(){
+         $categories = Categorie::all();
         return response($categories, 200);
       }
 }

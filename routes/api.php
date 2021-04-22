@@ -56,6 +56,7 @@ Route::post('/articles',[ArticleController::class,'store']);
 
 
 Route::get('/categorie',[CategorieController::class,'getAllCategories']);
+Route::get('/categories',[CategorieController::class,'getAllCategoriesSansPagination']);
 
 
 
