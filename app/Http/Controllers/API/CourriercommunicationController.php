@@ -29,4 +29,10 @@ class CourriercommunicationController extends Controller
         return response( $courriercommunications, 200);
 
     }
+
+    public function getAllCourrier(){
+         $courriercommunications = Courriercommunication::all();
+        return response( $courriercommunications, 200);
+
+    }
 }

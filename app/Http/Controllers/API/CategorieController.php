@@ -19,4 +19,24 @@ class CategorieController extends Controller
          $categories = Categorie::all();
         return response($categories, 200);
       }
+
+
+     public function addCategories(Request $request){
+
+        $categorie= new Categorie();
+        $categorie->name=$request->input('name');
+        $categorie->url_picture=$request->input('url_picture');
+        $categorie->save();
+        return response($categorie,201);
+      }
+
+      public function SupprimerCategoire($id) {
+          $categorie = Categorie::find($id);
+          $categorie->delete();
+          return response($categorie,201);
+      }
+
+
+
+
 }

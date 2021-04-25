@@ -17,6 +17,7 @@ use App\Http\Controllers\API\FavoriController;
 use App\Http\Controllers\API\ConversationController;
 use App\Http\Controllers\API\MessageController;
 use App\Http\Controllers\API\CommandeController;
+use App\Http\Controllers\API\CourriercommunicationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,6 +58,7 @@ Route::post('/articles',[ArticleController::class,'store']);
 
 Route::get('/categorie',[CategorieController::class,'getAllCategories']);
 Route::get('/categories',[CategorieController::class,'getAllCategoriesSansPagination']);
+Route::delete('/categorie/{id}',[CategorieController::class,'SupprimerCategoire']);
 
 
 
@@ -110,3 +112,7 @@ Route::post('/AjouterCommandeVente',[CommandeController::class,'AjouterCommandeV
 Route::post('/AjouterCommandeLocation',[CommandeController::class,'AjouterCommandeLocation']);
 Route::get('/AfficherCommandesGet/{id}',[CommandeController::class,'AfficherCommandesGet']);
 Route::get('/AfficherCommandePost/{id}',[CommandeController::class,'AfficherCommandePost']);
+
+
+
+Route::get('/courriercommunications',[CourriercommunicationController::class,'getAllCourrier']);
