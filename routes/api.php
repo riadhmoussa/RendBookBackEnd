@@ -59,6 +59,7 @@ Route::post('/articles',[ArticleController::class,'store']);
 Route::get('/categorie',[CategorieController::class,'getAllCategories']);
 Route::get('/categories',[CategorieController::class,'getAllCategoriesSansPagination']);
 Route::delete('/categorie/{id}',[CategorieController::class,'SupprimerCategoire']);
+Route::post('/categorie',[CategorieController::class,'addCategories']);
 
 
 
