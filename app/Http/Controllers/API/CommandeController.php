@@ -66,7 +66,6 @@ class CommandeController extends Controller
             ->where('commandes.typeCommande','=',"مجاني")
             ->where('conversations.acheteur_id','=',$id)
             ->get();
-
             $commandesVente = DB::table('commandes')
             ->select('commandes.*','produits.*','commande_ventes.*')
             ->join('commande_ventes', 'commandes.id', '=', 'commande_ventes.commande_id')
@@ -74,7 +73,6 @@ class CommandeController extends Controller
             ->join('produits','conversations.product_id','produits.id')
               ->where('conversations.acheteur_id','=',$id)
             ->get();
-
 $commandeLocation = DB::table('commandes')
 ->select('commandes.*','produits.*','commande_locations.*')
             ->join('commande_locations', 'commandes.id', '=', 'commande_locations.commande_id')
@@ -97,7 +95,7 @@ $commandeLocation = DB::table('commandes')
             ->join('conversations', 'commandes.conversation_id', '=', 'conversations.id')
             ->join('produits','conversations.product_id','produits.id')
             ->where('commandes.typeCommande','=',"مجاني")
-             ->where('conversations.acheteur_id','<>',$id)
+             ->where('conversations.proprietaire_id','=',$id)
             ->get();
 
             $commandesVente = DB::table('commandes')
@@ -105,7 +103,7 @@ $commandeLocation = DB::table('commandes')
             ->join('commande_ventes', 'commandes.id', '=', 'commande_ventes.commande_id')
              ->join('conversations', 'commandes.conversation_id', '=', 'conversations.id')
             ->join('produits','conversations.product_id','produits.id')
-              ->where('conversations.acheteur_id','<>',$id)
+              ->where('conversations.proprietaire_id','=',$id)
             ->get();
 
 $commandeLocation = DB::table('commandes')
@@ -113,7 +111,7 @@ $commandeLocation = DB::table('commandes')
             ->join('commande_locations', 'commandes.id', '=', 'commande_locations.commande_id')
              ->join('conversations', 'commandes.conversation_id', '=', 'conversations.id')
             ->join('produits','conversations.product_id','produits.id')
-              ->where('conversations.acheteur_id','<>',$id)
+              ->where('conversations.proprietaire_id','=',$id)
             ->get();
         $result = $commandesVente->merge($commandeLocation);
         $resultfinal = $result->merge($commandeGratuit);
