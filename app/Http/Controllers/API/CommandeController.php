@@ -87,7 +87,7 @@ $commandeLocation = DB::table('commandes')
         
        
            
-            return response($commandes,201);
+            return response(["data"=>$commandes],201);
     }
     public function AfficherCommandePost($id){
           $commandeGratuit = DB::table('commandes')
@@ -120,7 +120,7 @@ $commandeLocation = DB::table('commandes')
         
        
            
-            return response($commandes,201);
+            return response(["data"=>$commandes],201);
     }
 
 
