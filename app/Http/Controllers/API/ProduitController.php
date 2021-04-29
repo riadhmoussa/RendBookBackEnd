@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 use App\Models\Produit;
 use App\Models\Utilisateur;
 use App\Models\Favori;
+use App\Models\User;
 use Illuminate\Support\Facades\Log;
+
 
 class ProduitController extends Controller
 {
@@ -114,6 +116,13 @@ class ProduitController extends Controller
                 [['ville','like','%' .$ville. '%']])->get();
             return response($produit,201);
         }
+      }
+
+      public function getProductById($id){
+          $produit = Produit::find($id);
+          $utilisateur  = Utilisateur::find($produit->user_id);
+          $phone_number = User::find($utilisateur->user_id)->first()->phone_number;
+          return response(["product" => $produit,"utilisateur"=>$utilisateur,"phone_number"=>$phone_number],201);
       }
 
 

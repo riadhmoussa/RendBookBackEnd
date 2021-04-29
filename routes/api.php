@@ -82,6 +82,7 @@ Route::get('/produitsId/{id}',[ProduitController::class,'AfficherLivreId']);
 Route::get('/AfficherLivreDetails/{id}',[ProduitController::class,'AfficherLivreDetails']);
 
 Route::get('/AfficherProduitsPlusDemande',[ProduitController::class,'AfficherProduitsPlusDemande']);
+Route::get('/getProductById/{id}',[ProduitController::class,'getProductById']);
 
 
 Route::post('/commentaires',[CommenterController::class,'AjouterCommenter']);
