@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Log;
 
 class CourriercommunicationController extends Controller
 {
-    public function store(Request $request)
+    public function AjouterMessageUtilisateur(Request $request)
     {
 
         $courriercommunication= new Courriercommunication();

@@ -120,3 +120,4 @@ Route::get('/AfficherCommandePost/{id}',[CommandeController::class,'AfficherComm
 
 
 Route::get('/courriercommunications',[CourriercommunicationController::class,'getAllCourrier']);
+Route::get('/AjouterMessageUtilisateur',[CourriercommunicationController::class,'AjouterMessageUtilisateur']);
