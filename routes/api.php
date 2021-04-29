@@ -81,6 +81,8 @@ Route::delete('/produits/{id}',[ProduitController::class,'SupprimerProduit']);
 Route::get('/produitsId/{id}',[ProduitController::class,'AfficherLivreId']);
 Route::get('/AfficherLivreDetails/{id}',[ProduitController::class,'AfficherLivreDetails']);
 
+Route::get('/AfficherProduitsPlusDemande',[ProduitController::class,'AfficherProduitsPlusDemande']);
+
 
 Route::post('/commentaires',[CommenterController::class,'AjouterCommenter']);
 Route::get('/commentaires/{id}',[CommenterController::class,'AfficherCommentaire']);

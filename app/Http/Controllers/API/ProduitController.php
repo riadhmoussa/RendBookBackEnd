@@ -36,6 +36,16 @@ class ProduitController extends Controller
         return response($books,200);
     }
 
+    public function AfficherProduitsPlusDemande(){
+            $produits = Produit::leftJoin('conversations','produits.id','=','conversations.product_id')
+           ->selectRaw('produits.*, count(conversations.product_id) AS `count`')
+            ->having('count','>','0')
+           ->groupBy('produits.id')
+           ->orderBy('count','DESC')
+           ->paginate(10);
+           return response($produits,201);
+    }
+
     public function AfficherLivres(){
         $books = Produit::where('type_service',"=","book")->get();
         return response($books,200);
