@@ -12,11 +12,11 @@ class CourriercommunicationController extends Controller
 {
     public function AjouterMessageUtilisateur(Request $request)
     {
-
+error_log("hello world");
         $courriercommunication= new Courriercommunication();
         $courriercommunication->full_name=$request->input('full_name');
         $courriercommunication->phone_number=$request->input('phone_number');
-        $courriercommunication->email	=$request->input('email');
+        $courriercommunication->email=$request->input('email');
         $courriercommunication->subject	=$request->input('subject');
         $courriercommunication->text_body = $request->input('text_body');
         $courriercommunication->utilisateur_id=$request->input('utilisateur_id');
