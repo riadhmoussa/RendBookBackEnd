@@ -138,6 +138,42 @@ class ProduitController extends Controller
           return response(["product"=>$produit,"utilisateur"=>$utilisateur],201);
       }
 
+      public function RechercheProduits($typeRecherche,$nom,$id_categorie,$ville){
+          if($typeRecherche=="one"){
+
+                $produits = Produit::where('nom','like','%'.$nom.'%')->paginate(10);
+          return response($produits,201);
+          }else if($typeRecherche=="two"){
+
+
+ $produits = Produit::where('ville','=',$ville)->
+        where('id_categrie','=',$id_categorie)
+        ->paginate(10);
+        return response($produits,201);
+
+
+          }else if($typeRecherche=="three"){
+
+            
+ $produits = Produit::where('nom', 'like','%'.$nom.'%')
+            ->where('ville', '=', $ville)
+            ->where('id_categrie', '=', $id_categorie)
+            ->paginate(10);
+
+        return response($produits,201);
+          }else if($typeRecherche=="four"){
+$produits = Produit::where('id_categrie', '=', $id_categorie)
+            ->paginate(10);
+
+        return response($produits,201);
+          }
+          else{
+              $produits = Produit::paginate(10);
+              return response($produits,201);
+          }
+
+      }
+
 
      public function RechercheThreFact(Request $request){
         //error_log($request->ville);
@@ -146,7 +182,7 @@ class ProduitController extends Controller
             $produits = Produit::where('nom', 'like','%'.$request->nom.'%')
             ->where('ville', '=', $request->ville)
             ->where('id_categrie', '=', $request->id_categorie)
-            ->get();
+            ->paginate(10);
 
         return response($produits,201);
       }
@@ -156,12 +192,12 @@ class ProduitController extends Controller
        // error_log($request->id_categorie);
         $produits = Produit::where('ville','=',$request->ville)->
         where('id_categrie','=',$request->id_categorie)
-        ->get();
+        ->paginate(10);
         return response($produits,201);
       }
 
       public function RechercheOneFact(Request $request){
-          $produits = Produit::where('nom','like','%'.$request->nom.'%')->get();
+          $produits = Produit::where('nom','like','%'.$request->nom.'%')->paginate(10);
           return response($produits,201);
       }
 
