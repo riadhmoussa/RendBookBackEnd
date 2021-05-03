@@ -8,6 +8,8 @@ use App\Models\Produit;
 use App\Models\Utilisateur;
 use App\Models\Favori;
 use App\Models\User;
+use App\Models\AdresseProduit;
+
 use Illuminate\Support\Facades\Log;
 
 
@@ -15,7 +17,7 @@ class ProduitController extends Controller
 {
     public function Ajouter(Request $request)
     {
-        Log::info($request);
+        
         $produit= new Produit();
         $produit->nom=$request->input('nom');
         $produit->auteur=$request->input('auteur');
@@ -31,6 +33,7 @@ class ProduitController extends Controller
         $produit->user_id=$request->input('user_id');
         $produit->type_service=$request->input('type_service');
         $produit->save();
+  
         return response($produit, 201);
     }
     public function AfficherProduits(){
@@ -80,6 +83,7 @@ class ProduitController extends Controller
 
     public function AjouterService(Request $request)
     {
+        error_log($request);
         $produit= new Produit();
         $produit->nom=$request->input('nom');
         $produit->detaills=$request->input('detaills');

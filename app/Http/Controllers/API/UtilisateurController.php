@@ -37,9 +37,9 @@ class UtilisateurController extends Controller
          
 $utilisateur = Utilisateur::where('user_id', $id)->first();
         if($utilisateur){
-                return response([ 'message' => 'exist','utilisateur' =>$utilisateur],201);
+                return response([ 'message' => 'exist','user' =>$utilisateur],201);
         }else{
-            return response([ 'message' => 'notexist','utilisateur' =>null],201);
+            return response([ 'message' => 'notexist','user' =>null],201);
         }
         
     }

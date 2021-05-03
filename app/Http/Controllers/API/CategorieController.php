@@ -5,6 +5,8 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Categorie;
+use App\Models\Adresse;
+
 use Illuminate\Support\Facades\Log;
 
 class CategorieController extends Controller
@@ -18,6 +20,14 @@ class CategorieController extends Controller
       public function getAllCategoriesSansPagination(){
          $categories = Categorie::all();
         return response($categories, 200);
+      }
+
+      public function getCategoryAndAddress($id){
+        $categories = Categorie::all();
+        $adresses = Adresse::where('utilisateur_id', '=', $id)->get();
+
+        return response(["categories"=>$categories,"adresses"=>$adresses],201);
+        
       }
 
 
