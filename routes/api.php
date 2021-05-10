@@ -18,6 +18,7 @@ use App\Http\Controllers\API\ConversationController;
 use App\Http\Controllers\API\MessageController;
 use App\Http\Controllers\API\CommandeController;
 use App\Http\Controllers\API\CourriercommunicationController;
+use App\Http\Controllers\API\ClaimController;
 
 /*
 |--------------------------------------------------------------------------
@@ -126,3 +127,5 @@ Route::post('/AjouterMessageUtilisateur',[CourriercommunicationController::class
 
 
 Route::get('/getCategoryAndAddress/{id}',[CategorieController::class,'getCategoryAndAddress']);
+
+Route::post('/claims',[ClaimController::class,'AjouterClaim']);
