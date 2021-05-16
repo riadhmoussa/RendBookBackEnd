@@ -129,3 +129,4 @@ Route::post('/AjouterMessageUtilisateur',[CourriercommunicationController::class
 Route::get('/getCategoryAndAddress/{id}',[CategorieController::class,'getCategoryAndAddress']);
 
 Route::post('/claims',[ClaimController::class,'AjouterClaim']);
+Route::get('/claims/{id}',[ClaimController::class,'AfficherReclamation']);

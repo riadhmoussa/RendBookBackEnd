@@ -17,4 +17,10 @@ class ClaimController extends Controller
         $claim->save();
         return response($claim,201);
     }
+
+     public function AfficherReclamation($id){
+        $claims = Claim::where('utilisateur_id',"=",$id)->paginate(10);
+        return response($claims,200);
+    }
+
 }
