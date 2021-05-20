@@ -6,16 +6,17 @@ use Illuminate\Http\Request;
 
 class NotificationController extends Controller
 {
-    public function sendNotification(){
+    public function sendNotification(Request $request){
         define( 'AIzaSyBBX0emgCnGpKO6dI3oE8MbHpyJh62JAgA', 'AAAAP7b3V8w:APA91bGOOGRA1xnup1xjlkr5dNpMUN01uLl4ycmeIIChJ79PN1oWRRhaDdjrhDnTmvz4Duy49A-H1_rHjlxM4nWFmsy61pid5sQnrN52_LeyLU69lfF_eW_9bnbiEjL1wIzIv-weoUtP' );
 
 
 // prep the bundle
 $msg = array
 (
-	'message' 	=> 'here is a message. message',
-	'title'		=> 'This is a title. title',
-    'id' => '1',
+	'message' 	=> $request->message,
+	'title'		=> $request->title,
+    'id' => $request->id,
+    'type' => $request->type,
 	
 );
 
