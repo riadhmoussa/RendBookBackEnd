@@ -5,7 +5,10 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Commenter;
+use App\Models\Produit;
+
 use DB;
+use App\Http\Controllers\NotificationController;
 
 
 class CommenterController extends Controller
@@ -16,6 +19,10 @@ class CommenterController extends Controller
         $commenter->id_produit=$request->input('id_produit');
         $commenter->user_id=$request->input('user_id');
         $commenter->save();
+        $produit = Produit::find($request->id_produit);
+        app(\App\Http\Controllers\NotificationController::class)->sendNotification(
+            'hello','world!!!',$produit->user_id,'comment');
+
         return response($commenter,201);
     }
 

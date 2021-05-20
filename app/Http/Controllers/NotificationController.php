@@ -6,17 +6,17 @@ use Illuminate\Http\Request;
 
 class NotificationController extends Controller
 {
-    public function sendNotification(Request $request){
+    public function sendNotification($message,$title,$id,$type){
         define( 'AIzaSyBBX0emgCnGpKO6dI3oE8MbHpyJh62JAgA', 'AAAAP7b3V8w:APA91bGOOGRA1xnup1xjlkr5dNpMUN01uLl4ycmeIIChJ79PN1oWRRhaDdjrhDnTmvz4Duy49A-H1_rHjlxM4nWFmsy61pid5sQnrN52_LeyLU69lfF_eW_9bnbiEjL1wIzIv-weoUtP' );
 
 
 // prep the bundle
 $msg = array
 (
-	'message' 	=> $request->message,
-	'title'		=> $request->title,
-    'id' => $request->id,
-    'type' => $request->type,
+	'message' 	=> $message,
+	'title'		=> $title,
+    'id' => $id,
+    'type' => $type,
 	
 );
 
@@ -41,6 +41,6 @@ curl_setopt( $ch,CURLOPT_SSL_VERIFYPEER, false );
 curl_setopt( $ch,CURLOPT_POSTFIELDS, json_encode( $fields ) );
 $result = curl_exec($ch );
 curl_close( $ch );
-return response($result,200);
+
     }
 }
