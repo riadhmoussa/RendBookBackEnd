@@ -19,8 +19,9 @@ use App\Http\Controllers\API\MessageController;
 use App\Http\Controllers\API\CommandeController;
 use App\Http\Controllers\API\CourriercommunicationController;
 use App\Http\Controllers\API\ClaimController;
+use App\Http\Controllers\NotificationController;
 
-/*
+/*NotificationController
 |--------------------------------------------------------------------------
 | API Routes
 |--------------------------------------------------------------------------
@@ -130,3 +131,6 @@ Route::get('/getCategoryAndAddress/{id}',[CategorieController::class,'getCategor
 
 Route::post('/claims',[ClaimController::class,'AjouterClaim']);
 Route::get('/claims/{id}',[ClaimController::class,'AfficherReclamation']);
+
+
+Route::post('/notifications',[NotificationController::class,'sendNotification']);
