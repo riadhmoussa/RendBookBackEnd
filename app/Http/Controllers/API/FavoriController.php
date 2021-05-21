@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Favori;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\NotificationController;
 
 class FavoriController extends Controller
 {

@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Categorie;
 use App\Models\Adresse;
-
+use App\Http\Controllers\NotificationController;
 use Illuminate\Support\Facades\Log;
 
 class CategorieController extends Controller

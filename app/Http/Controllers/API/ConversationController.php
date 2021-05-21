@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Conversation;
 use App\Models\Message;
 use DB;
+use App\Http\Controllers\NotificationController;
 
 
 
@@ -19,6 +20,8 @@ class ConversationController extends Controller
         $conversation->product_id=$request->input('product_id');
         $conversation->status="attente";
         $conversation->save();
+        app(\App\Http\Controllers\NotificationController::class)->sendNotification(
+            'hello','world!!!',$request->input('proprietaire_id'),'commande');
         error_log($request);
         return response($conversation,201);
     }

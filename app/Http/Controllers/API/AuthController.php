@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Utilisateur;
+use App\Http\Controllers\NotificationController;
 
 class AuthController extends Controller
 {

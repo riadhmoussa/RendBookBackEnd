@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Commenter;
 use App\Models\Produit;
-
 use DB;
 use App\Http\Controllers\NotificationController;
 

@@ -9,7 +9,7 @@ use App\Models\Utilisateur;
 use App\Models\Favori;
 use App\Models\User;
 use App\Models\AdresseProduit;
-
+use App\Http\Controllers\NotificationController;
 use Illuminate\Support\Facades\Log;
 
 

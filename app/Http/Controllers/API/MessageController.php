@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Message;
 use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\NotificationController;
 
 class MessageController extends Controller
 {
@@ -17,6 +18,8 @@ class MessageController extends Controller
         $message->receveur_di=$request->input('receveur_di');
         $message->conversation_id=$request->input('conversation_id');
         $message->save();
+        app(\App\Http\Controllers\NotificationController::class)->sendNotification(
+            'hello','world!!!',$request->input('receveur_di'),'message');
         return response($message, 201);
 
     }

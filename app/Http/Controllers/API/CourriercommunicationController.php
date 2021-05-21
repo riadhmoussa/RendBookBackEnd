@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Courriercommunication;
 use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\NotificationController;
 
 
 class CourriercommunicationController extends Controller

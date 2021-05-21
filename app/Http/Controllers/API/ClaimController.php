@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Claim;
+use App\Http\Controllers\NotificationController;
 
 class ClaimController extends Controller
 {
