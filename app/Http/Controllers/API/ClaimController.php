@@ -30,4 +30,18 @@ class ClaimController extends Controller
 
     }
 
+       public function editEtat($id){
+        $claim = Claim::find($id);
+        $claim->seen= true;
+        $claim->save();
+        return response( $claim, 200);
+    }
+     public function editNoteAdminstration(Request $request,$id){
+        $claim = Claim::find($id);
+        $claim->notes_administration= $request->input('notes_administration');
+        $claim->save();
+        return response( $claim, 200);
+    }
+
+
 }
