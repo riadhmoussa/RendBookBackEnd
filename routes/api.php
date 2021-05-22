@@ -131,6 +131,8 @@ Route::get('/getCategoryAndAddress/{id}',[CategorieController::class,'getCategor
 
 Route::post('/claims',[ClaimController::class,'AjouterClaim']);
 Route::get('/claims/{id}',[ClaimController::class,'AfficherReclamation']);
+Route::get('/claims',[ClaimController::class,'AfficherToutReclaamtion']);
+
 
 
 Route::post('/notifications',[NotificationController::class,'sendNotification']);

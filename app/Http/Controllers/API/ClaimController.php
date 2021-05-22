@@ -24,4 +24,10 @@ class ClaimController extends Controller
         return response($claims,200);
     }
 
+    public function AfficherToutReclaamtion(){
+            $claims = Claim::all();
+            return response($claims,200);
+
+    }
+
 }
