@@ -134,6 +134,7 @@ Route::get('/claims/{id}',[ClaimController::class,'AfficherReclamation']);
 Route::get('/claims',[ClaimController::class,'AfficherToutReclaamtion']);
 Route::put('/claims/{id}',[ClaimController::class,'editEtat']);
 Route::put('claimEdit/{id}',[ClaimController::class,'editNoteAdminstration']);
+Route::get('/claimDetails/{id}',[ClaimController::class,'ClaimDetaills']);
 
 
 

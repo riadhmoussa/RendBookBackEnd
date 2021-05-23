@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Claim;
 use App\Http\Controllers\NotificationController;
+use DB;
 
 class ClaimController extends Controller
 {
@@ -43,5 +44,14 @@ class ClaimController extends Controller
         return response( $claim, 200);
     }
 
+    public function ClaimDetaills($id){
+          $produit = DB::table('produits')
+    ->join('conversations', 'conversations.product_id', '=', 'produits.id')
+    ->join('commandes','commandes.conversation_id','=','conversations.id')
+    ->where('commandes.id', '=' , $id)
+    ->get();
+            return response($produit,201);
+
+    }
 
 }
