@@ -205,6 +205,11 @@ $produits = Produit::where('id_categrie', '=', $id_categorie)
           return response($produits,201);
       }
 
+
+       public function getAllProduit(){
+        $books = Produit::all();
+        return response($books,200);
+    }
     
 
 }

@@ -43,6 +43,7 @@ Route::get('/utilisateurs/getuser/{id}',[UtilisateurController::class,'obtenirUt
 Route::put('/utilisateurs/picture/{id}',[UtilisateurController::class,'ChangePhoto']);
 Route::put('/utilisateurs/info/{id}',[UtilisateurController::class,'AjourInfo']);
 Route::get('verificationUtilisateur/{id}',[UtilisateurController::class,'VerifierUtilisateur']);
+Route::get('/users',[UtilisateurController::class,'getUsers']);
 
 
 Route::post('/adresses/store',[AdresseController::class,'store']);
@@ -79,6 +80,7 @@ Route::post('/produits/RechercheThreFact',[ProduitController::class,'RechercheTh
 Route::post('/produits/RechrcheTwoFact',[ProduitController::class,'RechrcheTwoFact']);
 Route::post('/produits/RechercheOneFact',[ProduitController::class,'RechercheOneFact']);
 Route::delete('/produits/{id}',[ProduitController::class,'SupprimerProduit']);
+Route::get('/produit/getAllProduit',[ProduitController::class,'getAllProduit']);
 
 Route::get('/produitsId/{id}',[ProduitController::class,'AfficherLivreId']);
 Route::get('/AfficherLivreDetails/{id}',[ProduitController::class,'AfficherLivreDetails']);

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Utilisateur;
+use App\Models\User;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\NotificationController;
 
@@ -63,5 +64,28 @@ $utilisateur = Utilisateur::where('user_id', $id)->first();
         $utilisateur->email=$request->email;
         $utilisateur->save();
         return response($utilisateur,201);
+    }
+
+    public function getUsers(){
+
+        $users = Utilisateur::join('users', 'utilisateurs.user_id', '=', 'users.id')
+              ->get();
+              
+     
+        return response($users,200);
+
+    }
+
+    public function updateStatus(Request $request, $id) {
+        $user = User::find($id);
+        if($user->status==="allowed"){
+            $user->status="blocked";
+        }else{
+            $user->status="allowed";
+        }
+        $user->save();
+        return response($user,200);
+      
+   
     }
 }
