@@ -44,6 +44,7 @@ Route::put('/utilisateurs/picture/{id}',[UtilisateurController::class,'ChangePho
 Route::put('/utilisateurs/info/{id}',[UtilisateurController::class,'AjourInfo']);
 Route::get('verificationUtilisateur/{id}',[UtilisateurController::class,'VerifierUtilisateur']);
 Route::get('/users',[UtilisateurController::class,'getUsers']);
+Route::put('/users/{id}',[UtilisateurController::class,'updateStatus']);
 
 
 Route::post('/adresses/store',[AdresseController::class,'store']);
@@ -122,7 +123,7 @@ Route::post('/AjouterCommandeVente',[CommandeController::class,'AjouterCommandeV
 Route::post('/AjouterCommandeLocation',[CommandeController::class,'AjouterCommandeLocation']);
 Route::get('/AfficherCommandesGet/{id}',[CommandeController::class,'AfficherCommandesGet']);
 Route::get('/AfficherCommandePost/{id}',[CommandeController::class,'AfficherCommandePost']);
-
+Route::put('/commande/{id}',[CommandeController::class,'changeStatus']);
 
 
 Route::get('/courriercommunications',[CourriercommunicationController::class,'getAllCourrier']);

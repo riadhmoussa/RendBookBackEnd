@@ -134,6 +134,14 @@ $commandeLocation = DB::table('commandes')
     }
 
 
+    public function changeStatus($id){
+        $commande = Commande::find($id);
+        $commande->status="recived";
+        $commande->save();
+        return response($commande,201);
+
+    }
+
 
    
 }
