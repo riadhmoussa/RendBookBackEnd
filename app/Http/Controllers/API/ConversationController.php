@@ -22,7 +22,7 @@ class ConversationController extends Controller
         $conversation->save();
         app(\App\Http\Controllers\NotificationController::class)->sendNotification(
             'hello','world!!!',$request->input('proprietaire_id'),'commande');
-        error_log($request);
+        ;
         return response($conversation,201);
     }
 

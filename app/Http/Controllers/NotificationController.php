@@ -30,7 +30,6 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($fields));
 $pushResult = curl_exec($ch);
-echo $pushResult;
 curl_close($ch);
     }
 }

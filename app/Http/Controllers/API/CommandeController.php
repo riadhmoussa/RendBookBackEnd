@@ -142,9 +142,9 @@ $commandeLocation = DB::table('commandes')
 
     }
 
-     public function changeStatus($id){
+    public function CancelCommande($id,Request $request){
         $commande = Commande::find($id);
-        $commande->cancled="true";
+        $commande->cancled=$request->input('cancled');
         $commande->save();
         return response($commande,201);
 

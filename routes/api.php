@@ -124,6 +124,7 @@ Route::post('/AjouterCommandeLocation',[CommandeController::class,'AjouterComman
 Route::get('/AfficherCommandesGet/{id}',[CommandeController::class,'AfficherCommandesGet']);
 Route::get('/AfficherCommandePost/{id}',[CommandeController::class,'AfficherCommandePost']);
 Route::put('/commande/{id}',[CommandeController::class,'changeStatus']);
+Route::put('/CancelCommande/{id}',[CommandeController::class,"CancelCommande"]);
 
 
 Route::get('/courriercommunications',[CourriercommunicationController::class,'getAllCourrier']);
