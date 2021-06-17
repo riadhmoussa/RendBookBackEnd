@@ -20,6 +20,7 @@ use App\Http\Controllers\API\CommandeController;
 use App\Http\Controllers\API\CourriercommunicationController;
 use App\Http\Controllers\API\ClaimController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\API\AvisController;
 
 /*NotificationController
 |--------------------------------------------------------------------------
@@ -87,7 +88,7 @@ Route::get('/produitsId/{id}',[ProduitController::class,'AfficherLivreId']);
 Route::get('/AfficherLivreDetails/{id}',[ProduitController::class,'AfficherLivreDetails']);
 
 Route::get('/AfficherProduitsPlusDemande',[ProduitController::class,'AfficherProduitsPlusDemande']);
-Route::get('/getProductById/{id}',[ProduitController::class,'getProductById']);
+Route::get('/getProductById/{id}/{user_id}',[ProduitController::class,'getProductById']);
 
 Route::get('/RechercheProduits/{typeRecherche}/{nom}/{ville}/{id_categorie}',[ProduitController::class,'RechercheProduits']);
 
@@ -143,3 +144,6 @@ Route::get('/claimDetails/{id}',[ClaimController::class,'ClaimDetaills']);
 
 
 Route::post('/notifications',[NotificationController::class,'sendNotification']);
+
+Route::post('/avis',[AvisController::class,'AjouterAvis']);
+Route::put('/avis/{id}',[AvisController::class,'EditAvis']);

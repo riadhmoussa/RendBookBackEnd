@@ -9,7 +9,9 @@ use App\Models\Utilisateur;
 use App\Models\Favori;
 use App\Models\User;
 use App\Models\AdresseProduit;
+use App\Models\Avis;
 use App\Http\Controllers\NotificationController;
+use DB;
 use Illuminate\Support\Facades\Log;
 
 
@@ -33,7 +35,6 @@ class ProduitController extends Controller
         $produit->user_id=$request->input('user_id');
         $produit->type_service=$request->input('type_service');
         $produit->save();
-  
         return response($produit, 201);
     }
     public function AfficherProduits(){
@@ -122,11 +123,16 @@ class ProduitController extends Controller
         }
       }
 
-      public function getProductById($id){
+      public function getProductById($id,$user_id){
           $produit = Produit::find($id);
           $utilisateur  = Utilisateur::find($produit->user_id);
           $phone_number = User::find($utilisateur->user_id)->first()->phone_number;
-          return response(["product" => $produit,"utilisateur"=>$utilisateur,"phone_number"=>$phone_number],201);
+         $avg_stars = DB::table('avis')
+                ->avg('note');
+        $results = Avis::where("utilisateur_id","=",$user_id)
+    ->where("product_id","=",$produit->id)
+    ->first();
+          return response(["product" => $produit,"utilisateur"=>$utilisateur,"phone_number"=>$phone_number,"stars"=>$avg_stars,"rating"=>$results],201);
       }
 
 
