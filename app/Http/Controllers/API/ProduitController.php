@@ -128,6 +128,7 @@ class ProduitController extends Controller
           $utilisateur  = Utilisateur::find($produit->user_id);
           $phone_number = User::find($utilisateur->user_id)->first()->phone_number;
          $avg_stars = DB::table('avis')
+         ->where('product_id', '=',$produit->id)
                 ->avg('note');
         $results = Avis::where("utilisateur_id","=",$user_id)
          ->where("product_id","=",$produit->id)
