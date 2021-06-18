@@ -5,6 +5,10 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Avis;
+use DB;
+
+
+
 class AvisController extends Controller
 {
    public function AjouterAvis(Request $request){
@@ -22,6 +26,19 @@ class AvisController extends Controller
         $avis->note= $request->input('note');
         $avis->save();
         return response( $avis, 200);
+    }
+
+    public function AfficherAvis($user_id,$product_id){
+        $avis = DB::table('avis')
+                    ->where('utilisateur_id', '=', $user_id)
+                    ->where('product_id','=', $product_id)
+                    ->first();
+                    if($avis){
+                        return response( ["exist"=>true,"avis"=>$avis], 200);
+                    }else{
+                         return response( ["exist"=>false,"avis"=>null], 200);
+                    }
+                      
     }
 
 }

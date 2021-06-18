@@ -130,9 +130,10 @@ class ProduitController extends Controller
          $avg_stars = DB::table('avis')
                 ->avg('note');
         $results = Avis::where("utilisateur_id","=",$user_id)
-    ->where("product_id","=",$produit->id)
-    ->first();
-          return response(["product" => $produit,"utilisateur"=>$utilisateur,"phone_number"=>$phone_number,"stars"=>$avg_stars,"rating"=>$results],201);
+         ->where("product_id","=",$produit->id)
+        ->first();
+        
+          return response(["product" => $produit,"utilisateur"=>$utilisateur,"phone_number"=>$phone_number,"stars"=>$avg_stars,"avis"=>$results],201);
       }
 
 

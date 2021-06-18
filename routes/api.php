@@ -147,3 +147,4 @@ Route::post('/notifications',[NotificationController::class,'sendNotification'])
 
 Route::post('/avis',[AvisController::class,'AjouterAvis']);
 Route::put('/avis/{id}',[AvisController::class,'EditAvis']);
+Route::get('/avis/{user_id}/{product_id}',[AvisController::class,'AfficherAvis']);
