@@ -36,6 +36,7 @@ class CategorieController extends Controller
         $categorie= new Categorie();
         $categorie->name=$request->input('name');
         $categorie->url_picture=$request->input('url_picture');
+        $categorie->english_name=$request->input('english_name');
         $categorie->save();
         return response($categorie,201);
       }
